@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { FolderPageRoutingModule } from './folder-routing.module';
-import { FolderPage } from './folder.page';
+import { PratoPageRoutingModule } from './prato-routing.module';
+import { PratoPage } from './prato.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FolderPageRoutingModule
+    PratoPageRoutingModule
   ],
-  declarations: [FolderPage]
+  declarations: [PratoPage]
 })
-export class FolderPageModule {}
+export class PratoPageModule {}
