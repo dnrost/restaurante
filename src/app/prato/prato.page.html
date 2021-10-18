@@ -10,12 +10,62 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">{{ prato }}</ion-title>
+      <ion-title size="large" *ngIf="prato!='dia'">{{ prato }}</ion-title>
+      <ion-title size="large" *ngIf="prato=='dia'">Prato Promocional do Dia</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <strong class="capitalize">{{ prato }}</strong>
+   <strong class="capitalize" *ngIf="prato!='dia'">{{ prato }}</strong>
+    <strong class="capitalize" *ngIf="prato=='dia'">Prato Promocional do Dia</strong>
+<!-- lanches -->
+<ion-card *ngIf="prato=='Lanches'">
+
+ <ion-item class="ion-activated">
+    <ion-label>X-Calabresa</ion-label>
+    <ion-label>2.50</ion-label>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/30FCly5"></ion-img>
+    <ion-button expand="full" (click)="xc = !xc" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="tutorialIcon" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+<ion-item>
+<ion-label>X-Calabresa</ion-label>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/30FCly5"></ion-img>
+<ion-button expand="full" (click)="tutorialShown = !tutorialShown" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="tutorialIcon" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+    <ion-text id="tutorial" *ngIf="tutorialShown">
+       <br/>
+        Valor: R$18,00 <br/>
+        Pão, carne, 02 queijos, calabresa, alface e tomate. 
+        <br/>
+    </ion-text>  
+      <ion-text id="tutorial" *ngIf="xc">
+      <ion-img style="width:250px; height:220px;center;" src="https://bit.ly/30FCly5"></ion-img>
+    </ion-text>
+
+              <ion-item>
+  <ion-label>Testing ngIf ?</ion-label>
+  <ion-select [(ngModel)]="sel" >
+    <ion-select-option value="YES"> YES </ion-select-option>
+    <ion-select-option value= "NO"> NO </ion-select-option>
+  </ion-select>
+</ion-item>
+
+<ion-label *ngIf="sel === 'YES'">TEST</ion-label>
+  <!-- fim lanches-->
+
+</ion-card>
+
+
+
+
+
     <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>
 </ion-content>

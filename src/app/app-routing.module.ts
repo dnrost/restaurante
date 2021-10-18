@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes,  } from '@angular/router';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'prato/Inbox',
+    redirectTo: 'prato/dia',
     pathMatch: 'full'
   },
   {
