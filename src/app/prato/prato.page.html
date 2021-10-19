@@ -3,12 +3,16 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ prato }}</ion-title>
+    <ion-title>
+    <strong class="capitalize" *ngIf="prato!='dia'">{{prato}}</strong>
+    <strong class="capitalize" *ngIf="prato=='dia'">Prato Promocional do Dia</strong>
+    </ion-title>
+    
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header collapse="condense" *ngIf="prato!='dia'">
     <ion-toolbar>
       <ion-title size="large" *ngIf="prato!='dia'">{{ prato }}</ion-title>
       <ion-title size="large" *ngIf="prato=='dia'">Prato Promocional do Dia</ion-title>
@@ -16,84 +20,158 @@
   </ion-header>
 
   <div id="container">
-   <strong class="capitalize" *ngIf="prato!='dia'">{{ prato }}</strong>
-    <strong class="capitalize" *ngIf="prato=='dia'">Prato Promocional do Dia</strong>
-
 <!-- prato do dia -->
 <ion-card *ngIf="prato=='dia'">
- <ion-item class="ion-activated">
-    <ion-label>A la minuta</ion-label>
-    <ion-label><b>19,90</b></ion-label>
-    <ion-img style="width:300px; height:300px;" src="https://bit.ly/3ATuAkq"></ion-img>
-    
-  </ion-item>
-  <ion-label>Prato com bife, batata palha ou batata frita, ovo, arroz e feijão. Acompanha salada.</ion-label>
+
+  <ion-item-sliding id="item100">
+    <ion-item>
+      <ion-label>
+        <p><b>Uma entrada, um prato de refeição e uma sobremesa.</b></p>
+        <ion-button expand="full" (click)="ww = !ww" fill="outline" slot="end">
+        <span>Verificar promoção do dia</span>
+        <ion-icon id="bi1w" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+      </ion-label>
+      <ion-note slot="end">
+        <ion-chip>
+      <ion-label color="danger" class="ion-text-wrap">R$159,00</ion-label>
+    </ion-chip> 
+      </ion-note>
+    </ion-item>
+</ion-item-sliding>
+  
+ <ion-text id="ba2742" *ngIf="ww">
+  <br/>
+       <ion-chip>
+        <ion-label color="secondary">Entrada</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Caldo de mandioquinha</ion-label>
+      </ion-chip>        
+        <br/>
+         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3pdSm8x"></ion-img>
+      <br/>
+       <ion-chip>
+        <ion-label color="secondary">Refeição</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Massa à carbonara</ion-label>
+      </ion-chip>        
+        <br/>
+         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3vu8ofn"></ion-img>
+         <br/>
+       <ion-chip>
+        <ion-label color="secondary">Sobremsa</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Pudim</ion-label>
+      </ion-chip>        
+        <br/>
+         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3jfkjJ6"></ion-img>
+    </ion-text>
+
 </ion-card>
 <!-- fim prato do dia  -->
 
-<!-- inicio lanches -->
-
-
-<!-- fim lanches  -->
-
 <!-- inicio bebidas -->
 <ion-card *ngIf="prato=='Bebidas'">
-
  <ion-item class="ion-activated">
-    <ion-label>Refrigerante</ion-label>
-    <ion-label>5.00</ion-label>
+   <ion-item color="secondary">
+    <ion-label>
+       Refrigerante 
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$5,00</ion-label>
+    </ion-chip>
     <ion-img style="width:150px; height:120px;" src="https://bit.ly/3jfMbwL"></ion-img>
     <ion-button expand="full" (click)="re = !re" fill="outline" slot="end">
         <span>Detalhes</span>
         <ion-icon id="bi1" name="arrow-dropdown" slot="end"></ion-icon>
     </ion-button>
   </ion-item>
-   <ion-text id="ba1" *ngIf="re">
+   <ion-text id="ba1543" *ngIf="re">
        <br/>
-        Valor: R$5,00 <br/>
-        Refrigerantes de Cola, uva e laranja.
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$5,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Diversos refrigerantes de cola, uva, laranja e guaraná.</ion-label>
+      </ion-chip>        
         <br/>
          <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3BTTCB3"></ion-img>
     </ion-text> 
 
    <ion-item class="ion-activated">
-    <ion-label>Cerveja</ion-label>
-    <ion-label>9.00</ion-label>
+    <ion-item color="secondary">
+    <ion-label>
+       Cerveja 
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$9,00</ion-label>
+    </ion-chip>
     <ion-img style="width:150px; height:120px;" src="https://bit.ly/2XnTafp"></ion-img>
     <ion-button expand="full" (click)="ce = !ce" fill="outline" slot="end">
         <span>Detalhes</span>
         <ion-icon id="bi2" name="arrow-dropdown" slot="end"></ion-icon>
     </ion-button>
   </ion-item>
-   <ion-text id="ba2" *ngIf="ce">
-       <br/>
-        Valor: R$9,00 <br/>
-        Diversas marcas de cervejas disponíveis.
+   <ion-text id="ba2044" *ngIf="ce">
+      <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$9,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Diversas marcas de cerveja disponíveis.</ion-label>
+      </ion-chip>        
         <br/>
          <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3aNfe6v"></ion-img>
     </ion-text> 
 
   <ion-item class="ion-activated">
-    <ion-label>Suco</ion-label>
-    <ion-label>8.00</ion-label>
+    <ion-item color="secondary">
+    <ion-label>
+       Suco natural 
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$8,00</ion-label>
+    </ion-chip>
     <ion-img style="width:150px; height:120px;" src="https://bit.ly/3lSLnzR"></ion-img>
     <ion-button expand="full" (click)="su = !su" fill="outline" slot="end">
         <span>Detalhes</span>
         <ion-icon id="bi3" name="arrow-dropdown" slot="end"></ion-icon>
     </ion-button>
   </ion-item>
-     <ion-text id="ba2" *ngIf="su">
-       <br/>
-        Valor: R$8,00 <br/>
-        Sucos naturais de laranja, limão, acerola e maracujá.
+     <ion-text id="ba2045" *ngIf="su">
         <br/>
-         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3aM7kKy"></ion-img>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$8,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Sucos naturais de laranja, limão, acerola e maracujá.</ion-label>
+      </ion-chip>        
+        <br/>
+        <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3aM7kKy"></ion-img>
     </ion-text> 
 
     <ion-item class="ion-activated">
-      <ion-item color="secondary">
+    <ion-item color="secondary">
     <ion-label>
-      Água mineral ou H2O
+      Água mineral 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </ion-label>
   </ion-item>
     <ion-chip>
@@ -105,32 +183,656 @@
         <ion-icon id="bi4" name="arrow-dropdown" slot="end"></ion-icon>
     </ion-button>
   </ion-item>
-    <ion-text id="ba3" *ngIf="ho">
+    <ion-text id="ba3046" *ngIf="ho">
        <br/>
-        Valor: R$6,00 <br/>
-        Agua mineral com ou sem gás e água gaseificada de limão.
-        <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$6,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Água mineral com ou sem gás. </ion-label>
+      </ion-chip>  
          <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3jeuPR6"></ion-img>
     </ion-text> 
 
    <ion-item class="ion-activated">
-    <ion-label>Vinho</ion-label>
-    <ion-label>16.00</ion-label>
+    <ion-item color="secondary">
+    <ion-label>
+      Vinho 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$6,00</ion-label>
+    </ion-chip>
     <ion-img style="width:150px; height:120px;" src="https://bit.ly/3jdIzeR"></ion-img>
     <ion-button expand="full" (click)="vi = !vi" fill="outline" slot="end">
         <span>Detalhes</span>
         <ion-icon id="bi5" name="arrow-dropdown" slot="end"></ion-icon>
     </ion-button>
   </ion-item>
-    <ion-text id="ba1" *ngIf="vi">
+    <ion-text id="ba1047" *ngIf="vi">
        <br/>
-        Valor: R$16,00 <br/>
-        Vinho da Serra Gaúcha. 
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$16,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Vinho da Serra Gaúcha.</ion-label>
+      </ion-chip>        
         <br/>
         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3jdIzeR"></ion-img>
     </ion-text> 
 <!-- fim bebidas -->
 </ion-card>
+
+<!-- inicio sobremesas -->
+<ion-card *ngIf="prato=='Sobremesas'">
+
+ <ion-item class="ion-activated">
+   <ion-item color="secondary">
+    <ion-label>
+       Mousses 
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$5,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/2ZdQe5U"></ion-img>
+    <ion-button expand="full" (click)="rex = !rex" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi1" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+   <ion-text id="ba1048" *ngIf="rex">
+       <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$5,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Mousse de limão, chocolate e morango.</ion-label>
+      </ion-chip>        
+        <br/>
+         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/2ZdQe5U"></ion-img>
+    </ion-text> 
+
+   <ion-item class="ion-activated">
+    <ion-item color="secondary">
+    <ion-label>
+       Pavê-tiramissu 
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$9,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/2Z2aebw"></ion-img>
+    <ion-button expand="full" (click)="cex = !cex" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi2" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+   <ion-text id="ba2056" *ngIf="cex">
+      <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$9,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Pavê-tiramissu</ion-label>
+      </ion-chip>        
+        <br/>
+         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/2Z2aebw"></ion-img>
+    </ion-text> 
+
+  <ion-item class="ion-activated">
+    <ion-item color="secondary">
+    <ion-label>
+      Pudim 
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$8,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/3jfkjJ6"></ion-img>
+    <ion-button expand="full" (click)="sux = !sux" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi3" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+     <ion-text id="ba2006" *ngIf="sux">
+        <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$8,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Pudim de chocolate branco e maracujá.</ion-label>
+      </ion-chip>        
+        <br/>
+        <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3jfkjJ6"></ion-img>
+    </ion-text> 
+
+    <ion-item class="ion-activated">
+    <ion-item color="secondary">
+    <ion-label>
+      Torta holandesa com castanhas 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$6,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/2YZrVZ8"></ion-img>
+    <ion-button expand="full" (click)="hox = !hox" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi4" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+    <ion-text id="ba3007" *ngIf="hox">
+       <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$6,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Torta holandesa com castanhas. </ion-label>
+      </ion-chip>  
+         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/2YZrVZ8"></ion-img>
+    </ion-text> 
+
+   <ion-item class="ion-activated">
+    <ion-item color="secondary">
+    <ion-label>
+      Torta-mousse de morango
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$6,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/3BXp01L"></ion-img>
+    <ion-button expand="full" (click)="vix = !vix" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi5" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+    <ion-text id="ba1008" *ngIf="vix">
+       <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$16,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Torta-mousse de morango com cobertura de cerejas.</ion-label>
+      </ion-chip>        
+        <br/>
+        <ion-img style="width:400px; height:200px;align:center;" src="https://bit.ly/3BXp01L"></ion-img>
+    </ion-text> 
+</ion-card>
+<!-- fim sobremesas -->
+
+<!-- inicio entradas -->
+<ion-card *ngIf="prato=='Entrada'">
+
+ <ion-item class="ion-activated">
+   <ion-item color="secondary">
+    <ion-label>
+       Caldo de mandioquinha 
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$25,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/3pdSm8x"></ion-img>
+    <ion-button expand="full" (click)="rey = !rey" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi1" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+   <ion-text id="ba1009" *ngIf="rey">
+       <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$25,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Caldo de mandioquinha</ion-label>
+      </ion-chip>        
+        <br/>
+         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3pdSm8x"></ion-img>
+    </ion-text> 
+
+   <ion-item class="ion-activated">
+    <ion-item color="secondary">
+    <ion-label>
+       Alcatra ao molho roti
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$90,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/3BXqqcB"></ion-img>
+    <ion-button expand="full" (click)="cey = !cey" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi2" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+   <ion-text id="ba2010" *ngIf="cey">
+      <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$90,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Carne Alcatra ao molho roti</ion-label>
+      </ion-chip>        
+        <br/>
+         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3BXqqcB"></ion-img>
+    </ion-text> 
+
+  <ion-item class="ion-activated">
+    <ion-item color="secondary">
+    <ion-label>
+      Caprese no palito
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$80,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/3pezQwM"></ion-img>
+    <ion-button expand="full" (click)="suy = !suy" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi3" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+     <ion-text id="ba2011" *ngIf="suy">
+        <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$80,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Queijo Caprese no palito.</ion-label>
+      </ion-chip>        
+        <br/>
+        <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3pezQwM"></ion-img>
+    </ion-text> 
+
+    <ion-item class="ion-activated">
+    <ion-item color="secondary">
+    <ion-label>
+      Tábua de queijos
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$26,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/3DWNTet"></ion-img>
+    <ion-button expand="full" (click)="hoy = !hoy" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi4" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+    <ion-text id="ba3012" *ngIf="hoy">
+       <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$26,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Tábua de queijos com vários tipos de queijos. </ion-label>
+      </ion-chip>  
+         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3DWNTet"></ion-img>
+    </ion-text> 
+
+   <ion-item class="ion-activated">
+    <ion-item color="secondary">
+    <ion-label>
+      Canapés de salame
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$40,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/3aTtt9G"></ion-img>
+    <ion-button expand="full" (click)="viy = !viy" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi5" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+    <ion-text id="ba1012" *ngIf="viy">
+       <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$40,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Canapés de salame com massa e salame.</ion-label>
+      </ion-chip>        
+        <br/>
+        <ion-img style="width:400px; height:200px;align:center;" src="https://bit.ly/3aTtt9G"></ion-img>
+    </ion-text> 
+</ion-card>
+<!-- fim entradas -->
+
+<!-- inicio refeicoes -->
+<ion-card *ngIf="prato=='Refeição'">
+
+ <ion-item class="ion-activated">
+   <ion-item color="secondary">
+    <ion-label>
+       Frango cremoso com batata palha
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$125,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/3DUhYex"></ion-img>
+    <ion-button expand="full" (click)="reo = !reo" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi1" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+   <ion-text id="ba1013" *ngIf="reo">
+       <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$125,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Frango com azeite, extrato de tomate, queijo creme ou requeijão, molho inglês, manteiga, farinha de trigo, mozzarela ralado, batata palha.</ion-label>
+      </ion-chip>        
+        <br/>
+         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3DUhYex"></ion-img>
+    </ion-text> 
+
+   <ion-item class="ion-activated">
+    <ion-item color="secondary">
+    <ion-label>
+       Espaguete à bolonhesa
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$100,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/3jhF2Mm"></ion-img>
+    <ion-button expand="full" (click)="ceo = !ceo" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi2" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+   <ion-text id="ba2101" *ngIf="ceo">
+      <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$100,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Espaguete à bolonhesa com massa e carne.</ion-label>
+      </ion-chip>        
+        <br/>
+         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3jhF2Mm"></ion-img>
+    </ion-text> 
+
+  <ion-item class="ion-activated">
+    <ion-item color="secondary">
+    <ion-label>
+      Massa à carbonara
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$110,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/3vu8ofn"></ion-img>
+    <ion-button expand="full" (click)="suo = !suo" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi3" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+     <ion-text id="ba2204" *ngIf="suo">
+        <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$110,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Massa à carbonara com diversos tipos de massas a escolha.</ion-label>
+      </ion-chip>        
+        <br/>
+        <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3vu8ofn"></ion-img>
+    </ion-text> 
+
+    <ion-item class="ion-activated">
+    <ion-item color="secondary">
+    <ion-label>
+      Lombo de porco no forno com batatinhas
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$126,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/3peCOBq"></ion-img>
+    <ion-button expand="full" (click)="hoo = !hoo" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi4" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+    <ion-text id="ba3205" *ngIf="hoo">
+       <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$126,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Lombo de porco no forno com batatinhas inglesas com salsa.</ion-label>
+      </ion-chip>  
+         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3peCOBq"></ion-img>
+    </ion-text> 
+
+   <ion-item class="ion-activated">
+    <ion-item color="secondary">
+    <ion-label>
+      Strogonoff de frango com arroz
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$140,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/3n8G1Qh"></ion-img>
+    <ion-button expand="full" (click)="vio = !vio" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi5" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+    <ion-text id="ba1106" *ngIf="vio">
+       <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$140,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Strogonoff de Frango com Arroz ou com Arroz com Cenouras.</ion-label>
+      </ion-chip>        
+        <br/>
+        <ion-img style="width:400px; height:200px;align:center;" src="https://bit.ly/3n8G1Qh"></ion-img>
+    </ion-text> 
+</ion-card>
+<!-- fim refeicoes -->
+
+
+<!-- inicio lanches -->
+<ion-card *ngIf="prato=='Lanches'">
+
+ <ion-item class="ion-activated">
+   <ion-item color="secondary">
+    <ion-label>
+       X-Calabresa
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$25,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/30FCly5"></ion-img>
+    <ion-button expand="full" (click)="reg = !reg" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi1" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+   <ion-text id="ba1207" *ngIf="reg">
+       <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$25,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">X com calabresa.</ion-label>
+      </ion-chip>        
+        <br/>
+         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/30FCly5"></ion-img>
+    </ion-text> 
+
+   <ion-item class="ion-activated">
+    <ion-item color="secondary">
+    <ion-label>
+       Cachorro quente
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$40,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/3G1B0Sf"></ion-img>
+    <ion-button expand="full" (click)="ceg = !ceg" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi2" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+   <ion-text id="ba2508" *ngIf="ceg">
+      <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$40,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Cachorro Quente com salsicha e pão.</ion-label>
+      </ion-chip>        
+        <br/>
+         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3G1B0Sf"></ion-img>
+    </ion-text> 
+
+  <ion-item class="ion-activated">
+    <ion-item color="secondary">
+    <ion-label>
+      Bauru
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$18,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/2Z2hsg5"></ion-img>
+    <ion-button expand="full" (click)="sug = !sug" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi3" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+     <ion-text id="ba2609" *ngIf="sug">
+        <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$18,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Bauru ao prato.</ion-label>
+      </ion-chip>        
+        <br/>
+        <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/2Z2hsg5"></ion-img>
+    </ion-text> 
+
+    <ion-item class="ion-activated">
+    <ion-item color="secondary">
+    <ion-label>
+      X-Tudo
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$26,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/30FCly5"></ion-img>
+    <ion-button expand="full" (click)="hog = !hog" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi4" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+    <ion-text id="ba3240" *ngIf="hog">
+       <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$26,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">Pão, carne, 02 queijos, calabresa, alface e tomate.</ion-label>
+      </ion-chip>  
+         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/30FCly5"></ion-img>
+    </ion-text> 
+
+   <ion-item class="ion-activated">
+    <ion-item color="secondary">
+    <ion-label>
+      X-Picanha
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$40,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/30FCly5"></ion-img>
+    <ion-button expand="full" (click)="vio = !vio" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi5" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+    <ion-text id="ba1441" *ngIf="vio">
+       <br/>
+       <ion-chip>
+        <ion-label color="secondary">Valor: R$40,00</ion-label>
+      </ion-chip>
+      <br>
+      <ion-chip>
+        <ion-label color="primary">X-Picanha com carne nobre.</ion-label>
+      </ion-chip>        
+        <br/>
+        <ion-img style="width:400px; height:200px;align:center;" src="https://bit.ly/30FCly5"></ion-img>
+    </ion-text> 
+</ion-card>
+<!-- fim refeicoes -->
 
   </div>
 </ion-content>
