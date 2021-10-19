@@ -18,54 +18,119 @@
   <div id="container">
    <strong class="capitalize" *ngIf="prato!='dia'">{{ prato }}</strong>
     <strong class="capitalize" *ngIf="prato=='dia'">Prato Promocional do Dia</strong>
-<!-- lanches -->
-<ion-card *ngIf="prato=='Lanches'">
+
+<!-- prato do dia -->
+<ion-card *ngIf="prato=='dia'">
+ <ion-item class="ion-activated">
+    <ion-label>A la minuta</ion-label>
+    <ion-label><b>19,90</b></ion-label>
+    <ion-img style="width:300px; height:300px;" src="https://bit.ly/3ATuAkq"></ion-img>
+    
+  </ion-item>
+  <ion-label>Prato com bife, batata palha ou batata frita, ovo, arroz e feijão. Acompanha salada.</ion-label>
+</ion-card>
+<!-- fim prato do dia  -->
+
+<!-- inicio lanches -->
+
+
+<!-- fim lanches  -->
+
+<!-- inicio bebidas -->
+<ion-card *ngIf="prato=='Bebidas'">
 
  <ion-item class="ion-activated">
-    <ion-label>X-Calabresa</ion-label>
-    <ion-label>2.50</ion-label>
-    <ion-img style="width:150px; height:120px;" src="https://bit.ly/30FCly5"></ion-img>
-    <ion-button expand="full" (click)="xc = !xc" fill="outline" slot="end">
+    <ion-label>Refrigerante</ion-label>
+    <ion-label>5.00</ion-label>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/3jfMbwL"></ion-img>
+    <ion-button expand="full" (click)="re = !re" fill="outline" slot="end">
         <span>Detalhes</span>
-        <ion-icon id="tutorialIcon" name="arrow-dropdown" slot="end"></ion-icon>
+        <ion-icon id="bi1" name="arrow-dropdown" slot="end"></ion-icon>
     </ion-button>
   </ion-item>
-<ion-item>
-<ion-label>X-Calabresa</ion-label>
-    <ion-img style="width:150px; height:120px;" src="https://bit.ly/30FCly5"></ion-img>
-<ion-button expand="full" (click)="tutorialShown = !tutorialShown" fill="outline" slot="end">
-        <span>Detalhes</span>
-        <ion-icon id="tutorialIcon" name="arrow-dropdown" slot="end"></ion-icon>
-    </ion-button>
-  </ion-item>
-
-    <ion-text id="tutorial" *ngIf="tutorialShown">
+   <ion-text id="ba1" *ngIf="re">
        <br/>
-        Valor: R$18,00 <br/>
-        Pão, carne, 02 queijos, calabresa, alface e tomate. 
+        Valor: R$5,00 <br/>
+        Refrigerantes de Cola, uva e laranja.
         <br/>
-    </ion-text>  
-      <ion-text id="tutorial" *ngIf="xc">
-      <ion-img style="width:250px; height:220px;center;" src="https://bit.ly/30FCly5"></ion-img>
-    </ion-text>
+         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3BTTCB3"></ion-img>
+    </ion-text> 
 
-              <ion-item>
-  <ion-label>Testing ngIf ?</ion-label>
-  <ion-select [(ngModel)]="sel" >
-    <ion-select-option value="YES"> YES </ion-select-option>
-    <ion-select-option value= "NO"> NO </ion-select-option>
-  </ion-select>
-</ion-item>
+   <ion-item class="ion-activated">
+    <ion-label>Cerveja</ion-label>
+    <ion-label>9.00</ion-label>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/2XnTafp"></ion-img>
+    <ion-button expand="full" (click)="ce = !ce" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi2" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+   <ion-text id="ba2" *ngIf="ce">
+       <br/>
+        Valor: R$9,00 <br/>
+        Diversas marcas de cervejas disponíveis.
+        <br/>
+         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3aNfe6v"></ion-img>
+    </ion-text> 
 
-<ion-label *ngIf="sel === 'YES'">TEST</ion-label>
-  <!-- fim lanches-->
+  <ion-item class="ion-activated">
+    <ion-label>Suco</ion-label>
+    <ion-label>8.00</ion-label>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/3lSLnzR"></ion-img>
+    <ion-button expand="full" (click)="su = !su" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi3" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+     <ion-text id="ba2" *ngIf="su">
+       <br/>
+        Valor: R$8,00 <br/>
+        Sucos naturais de laranja, limão, acerola e maracujá.
+        <br/>
+         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3aM7kKy"></ion-img>
+    </ion-text> 
 
+    <ion-item class="ion-activated">
+      <ion-item color="secondary">
+    <ion-label>
+      Água mineral ou H2O
+    </ion-label>
+  </ion-item>
+    <ion-chip>
+      <ion-label color="secondary">R$6,00</ion-label>
+    </ion-chip>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/3jeuPR6"></ion-img>
+    <ion-button expand="full" (click)="ho = !ho" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi4" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+    <ion-text id="ba3" *ngIf="ho">
+       <br/>
+        Valor: R$6,00 <br/>
+        Agua mineral com ou sem gás e água gaseificada de limão.
+        <br/>
+         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3jeuPR6"></ion-img>
+    </ion-text> 
+
+   <ion-item class="ion-activated">
+    <ion-label>Vinho</ion-label>
+    <ion-label>16.00</ion-label>
+    <ion-img style="width:150px; height:120px;" src="https://bit.ly/3jdIzeR"></ion-img>
+    <ion-button expand="full" (click)="vi = !vi" fill="outline" slot="end">
+        <span>Detalhes</span>
+        <ion-icon id="bi5" name="arrow-dropdown" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+    <ion-text id="ba1" *ngIf="vi">
+       <br/>
+        Valor: R$16,00 <br/>
+        Vinho da Serra Gaúcha. 
+        <br/>
+        <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3jdIzeR"></ion-img>
+    </ion-text> 
+<!-- fim bebidas -->
 </ion-card>
 
-
-
-
-
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>
 </ion-content>
