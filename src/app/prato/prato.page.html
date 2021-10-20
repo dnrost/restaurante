@@ -22,7 +22,6 @@
   <div id="container">
 <!-- prato do dia -->
 <ion-card *ngIf="prato=='dia'">
-
   <ion-item-sliding id="item100">
     <ion-item>
       <ion-label>
@@ -63,7 +62,7 @@
          <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3vu8ofn"></ion-img>
          <br/>
        <ion-chip>
-        <ion-label color="secondary">Sobremsa</ion-label>
+        <ion-label color="secondary">Sobremesa</ion-label>
       </ion-chip>
       <br>
       <ion-chip>
@@ -71,8 +70,10 @@
       </ion-chip>        
         <br/>
          <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3jfkjJ6"></ion-img>
+    <ion-chip>
+      <ion-label color="danger">Preço total do prato promocional: R$5,00</ion-label>
+    </ion-chip>
     </ion-text>
-
 </ion-card>
 <!-- fim prato do dia  -->
 
@@ -224,12 +225,11 @@
         <br/>
         <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3jdIzeR"></ion-img>
     </ion-text> 
-<!-- fim bebidas -->
 </ion-card>
+<!-- fim bebidas -->
 
 <!-- inicio sobremesas -->
 <ion-card *ngIf="prato=='Sobremesas'">
-
  <ion-item class="ion-activated">
    <ion-item color="secondary">
     <ion-label>
@@ -407,7 +407,7 @@
       </ion-chip>
       <br>
       <ion-chip>
-        <ion-label color="primary">Caldo de mandioquinha</ion-label>
+        <ion-label color="primary">Caldo de mandioquinha, com mandioca e carne.</ion-label>
       </ion-chip>        
         <br/>
          <ion-img style="width:300px; height:200px;center;" src="https://bit.ly/3pdSm8x"></ion-img>
@@ -532,7 +532,6 @@
 
 <!-- inicio refeicoes -->
 <ion-card *ngIf="prato=='Refeição'">
-
  <ion-item class="ion-activated">
    <ion-item color="secondary">
     <ion-label>
@@ -680,10 +679,8 @@
 </ion-card>
 <!-- fim refeicoes -->
 
-
 <!-- inicio lanches -->
 <ion-card *ngIf="prato=='Lanches'">
-
  <ion-item class="ion-activated">
    <ion-item color="secondary">
     <ion-label>
@@ -832,7 +829,7 @@
         <ion-img style="width:400px; height:200px;align:center;" src="https://bit.ly/30FCly5"></ion-img>
     </ion-text> 
 </ion-card>
-<!-- fim refeicoes -->
+<!-- fim lanches -->
 
   </div>
 </ion-content>
